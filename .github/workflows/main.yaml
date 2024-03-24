@@ -1,11 +1,8 @@
 name: Update Submodules
 
 on:
-  push:
-    branches:
-      - main 
-  repository_dispatch:
-    types: [update-submodules]
+  schedule:
+    - cron: '0 */6 * * *' 
 
 jobs:
   update-submodules:
@@ -19,9 +16,9 @@ jobs:
           
       - name: Set up Git identity
         run: |
-          git config --global user.email "wasath.vt@gmail.com"
-          git config --global user.name "WasathTheekshana"
-          
+          git config --global user.email "dune.githubbot@gmail.com"
+          git config --global user.name "GitHubBotDune"
+
       - name: Update submodules
         run: |
           git fetch
