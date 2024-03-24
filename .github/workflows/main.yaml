@@ -27,5 +27,10 @@ jobs:
           git fetch
           git submodule update --remote
           git submodule update --remote --merge
+
+          # Backdate commits
+          export GIT_COMMITTER_DATE="2022-01-01T12:00:00"
+          export GIT_AUTHOR_DATE="2022-01-01T12:00:00"
+          git add .
           git commit -am "Updated submodules"
           git push https://github.com/${{ github.repository }}.git HEAD:main
