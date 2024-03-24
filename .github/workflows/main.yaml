@@ -24,7 +24,21 @@ jobs:
         
     - name: Update submodules
       run: |
-        git submodule update --remote --recursive
+        # Define the branches for each submodule
+        declare -A submodule_branches=(
+          ["unite-doctor-frontend"]="dev/v1"
+          ["unite-patient-frontend"]="dev/v1"
+          ["unite-landing-frontend"]="main"
+          ["unite-doctor-backend"]="main"
+        )
+
+        # Iterate over each submodule, checkout the specified branch, and pull latest changes
+        for submodule in "${!submodule_branches[@]}"; do
+          branch="${submodule_branches[$submodule]}"
+          git -C "$submodule" checkout "$branch" && git -C "$submodule" pull origin "$branch"
+        done
+        
+        # Add any changes in the submodules
         git add .
         
         # Check if there are changes in submodules
