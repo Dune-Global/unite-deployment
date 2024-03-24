@@ -1,0 +1,9 @@
+[submodule "unite-doctor-frontend"]
+	path = unite-doctor-frontend
+	url = https://github.com/Dune-Global/unite-doctor-frontend.git
+[submodule "unite-patient-frontend"]
+	path = unite-patient-frontend
+	url = https://github.com/Dune-Global/unite-patient-frontend.git
+[submodule "unite-landing-frontend"]
+	path = unite-landing-frontend
+	url = https://github.com/Dune-Global/unite-landing-frontend.git
