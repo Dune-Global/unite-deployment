@@ -1,5 +1,36 @@
-version: "3.8"
+version: "3.6"
 
-doctor-frontend:
-  build: ./unite-doctor-frontend
+services:
+  unite-landing:
+    build: ./unite-landing-frontend
+    container_name: unite-landing
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./unite-landing-frontend/.env
+    networks:
+      - fullstack
 
+  unite-patient-frontend: 
+    build: ./unite-patient-frontend
+    container_name: unite-patient-frontend
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./unite-patient-frontend/.env
+    networks:
+      - fullstack
+
+  unite-doctor-frontend:
+    build: ./unite-doctor-frontend
+    container_name: unite-doctor-frontend
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./unite-doctor-frontend/.env
+    networks:
+      - fullstack
+
+networks:
+  fullstack:
+    driver: bridge
