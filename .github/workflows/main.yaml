@@ -1,0 +1,21 @@
+name: Update Submodules
+
+on:
+  repository_dispatch:
+    types: [update-submodules]
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Update submodules
+      run: |
+        git submodule update --remote --recursive
+        export GIT_AUTHOR_DATE="2024-02-10T12:00:00"
+        export GIT_COMMITTER_DATE="2024-02-10T12:00:00"
+        git commit -am "Update submodules"
+        git push
