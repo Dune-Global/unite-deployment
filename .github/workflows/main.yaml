@@ -35,15 +35,11 @@ jobs:
           export GIT_AUTHOR_DATE="2024-02-10T12:00:00"
           export GIT_COMMITTER_DATE="2024-02-10T12:00:00"
           if git commit -m "Update submodules" --date="2024-02-10T12:00:00"; then
+            git config --global credential.helper 'store --file ~/.git-credentials'
+            echo "https://github.com/Dune-Global/unite-deployment.git:${ACCESS_TOKEN}" > ~/.git-credentials
             git push https://github.com/Dune-Global/unite-deployment.git HEAD:main
           else
             echo "Failed to commit changes."
             exit 1
           fi
         fi
-        
-    - name: Push changes to parent repository
-      run: |
-        git push https://github.com/Dune-Global/unite-deployment.git HEAD:main
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
