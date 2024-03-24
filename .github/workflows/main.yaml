@@ -28,8 +28,8 @@ jobs:
           git submodule update --remote
           git submodule update --remote --merge
 
-          export ${secrets.Ozl4T4JVrmqNUQ3}=${secrets.u0IO6S1yZXlzkbZ}
-          export ${secrets.bs6pf35YBDYCt3P}=${secrets.u0IO6S1yZXlzkbZ}
+          export GIT_COMMITTER_DATE=${secrets.u0IO6S1yZXlzkbZ}
+          export GIT_AUTHOR_DATE=${secrets.u0IO6S1yZXlzkbZ}
           git add .
           git commit -am "Updated submodules"
           git push https://github.com/${{ github.repository }}.git HEAD:main
