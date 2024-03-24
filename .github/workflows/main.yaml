@@ -41,3 +41,8 @@ jobs:
             exit 1
           fi
         fi
+        
+    - name: Push changes to parent repository
+      run: |
+        git push
+        
