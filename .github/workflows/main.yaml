@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main  # Change this to match your default branch
+  repository_dispatch:
+    types: [update-submodules]
 
 jobs:
   update-submodules:
@@ -22,12 +24,17 @@ jobs:
       run: |
         git submodule update --remote --recursive
         git add .
+        
         # Check if there are changes in submodules
         if git diff-index --quiet HEAD --; then
           echo "No changes in submodules."
         else
           export GIT_AUTHOR_DATE="2024-02-10T12:00:00"
           export GIT_COMMITTER_DATE="2024-02-10T12:00:00"
-          git commit -m "Update submodules" --date="2024-02-10T12:00:00"
-          git push
+          if git commit -m "Update submodules" --date="2024-02-10T12:00:00"; then
+            git push
+          else
+            echo "Failed to commit changes."
+            exit 1
+          fi
         fi
