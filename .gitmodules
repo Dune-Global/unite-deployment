@@ -7,3 +7,6 @@
 [submodule "unite-landing-frontend"]
 	path = unite-landing-frontend
 	url = https://github.com/Dune-Global/unite-landing-frontend.git
+[submodule "unite-doctor-backend"]
+	path = unite-doctor-backend
+	url = https://github.com/Dune-Global/unite-doctor-backend.git
