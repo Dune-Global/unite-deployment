@@ -13,6 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
+    - name: Set up Git identity
+      run: |
+        git config --global user.email "wasath.vt@gmail.com"
+        git config --global user.name "WasathTheekshana"
+        
     - name: Update submodules
       run: |
         git submodule update --remote --recursive
