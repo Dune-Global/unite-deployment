@@ -3,7 +3,7 @@ name: Update Submodules
 on:
   push:
     branches:
-      - main  # Change this to match your default branch
+      - main 
   repository_dispatch:
     types: [update-submodules]
 
