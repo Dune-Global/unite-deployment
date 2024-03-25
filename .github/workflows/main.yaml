@@ -3,6 +3,8 @@ name: Update Submodules
 on:
   schedule:
     - cron: '0 */6 * * *' 
+  repository_dispatch:
+    types: [update-submodules]
 
 jobs:
   update-submodules:
